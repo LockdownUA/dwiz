@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Інфоормація про клієнта</h1>
+
+<div class="client-data">
+    <p>Ім'я клієнта: <span>{{client.name}}</span></p>
+    <p>Дата: <span>{{client.date_from|date:"Y-m-d"}}</span> - <span>{{client.date_to|date:"Y-m-d"}}</span></p>
+    <p>Магазини:</p>
+    {% for s in shops %}
+        <p><span>{{s}}</span></p>
+    {% endfor %}
+</div>
+
+{% endblock content %}

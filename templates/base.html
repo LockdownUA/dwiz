@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datawiz Test</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        {% if request.user.is_authenticated %}
+            <div>
+                <p>{{request.user.username}}</p>
+                <p><a href="{% url 'logout' %}">Вихід</a></p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a href="{% url 'client' %}">Дані користувача</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}">Основні показники</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'top' %}">Товари які виросли в продажах</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'down' %}">Товари які упали в продажах</a>
+                    </li>
+                </ul>
+            </nav>
+        {% else %}
+            <div>
+                <p>Авторизуйтесь щоб увійти в систему!!!</p>
+            </div>
+        {% endif %}
+    </header>
+    <div class="container">
+        {% block content %}
+        
+        {% endblock content %}
+    </div>
+</body>
+</html>
